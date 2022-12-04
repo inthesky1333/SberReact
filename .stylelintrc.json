@@ -1,17 +1,13 @@
 {
   "extends": [
-    "stylelint-config-standard"
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order"
   ],
   "plugins": [
     "stylelint-order"
   ],
   "rules": {
     "indentation": [2],
-    "order/order": [
-      "custom-properties",
-      "declarations"
-    ],
-    "order/properties-alphabetical-order": true,
     "block-no-empty": null,
     "color-hex-case": "upper",
     "selector-class-pattern": "^.*$",
