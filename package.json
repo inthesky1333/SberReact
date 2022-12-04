@@ -1,6 +1,7 @@
 {
   "name": "react_task_1",
   "version": "0.1.0",
+  "homepage": "https://galichanton.github.io/SberReact/",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
@@ -29,6 +30,7 @@
     "build": "craco build",
     "stylelint": "stylelint --fix \"**/*.{css,scss}\"",
     "co": "node cli/createComponent.js --path",
+    "gh-pages-deploy": "node scripts/gh-pages-deploy.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,6 +54,7 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.3.1",
+    "execa": "latest",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "eslint": "^8.6.0",
