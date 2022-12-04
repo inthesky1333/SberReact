@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoutes = () => {
   const token = localStorage.getItem("token");
   console.log(token);
+
   return (
     <>
       {token ? (
