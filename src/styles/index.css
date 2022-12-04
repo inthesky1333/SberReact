@@ -1,0 +1,36 @@
+@import url("Fonts/fonts.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 100vh;
+  font-family: Panton, sans-serif;
+  font-weight: 400;
+  background: #f5f9fc;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-text-field-primary-color: #191919;
+  --color-input-label: #aaa;
+  --color-text-field-background: #fafafa;
+  --font-text-field-plaseholder-color: #aaa;
+  --color-text-field-border-hover: #7fbffe;
+  --color-text-field-border-focus: #2b96f1;
+  --color-text-field-background-focus: #fff;
+  --color-text-field-background-hover: #fff;
+  --font-button-primary-color: #fff;
+  --color-button-primary-background: #2b96f1;
+  --color-button-primary-background-hover: #138aef;
+  --color-button-primary-background-active: #0f85e9;
+  --font-buttom-secondary-color: #828282;
+  --color-button-secondary-background: rgb(0 0 0 / 0%);
+  --color-button-secondary-background-hover: #fafafa;
+  --color-button-secondary-background-active: #f5f5f5;
+  --transition: all 0.3s ease-in-out;
+}
