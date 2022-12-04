@@ -2,14 +2,14 @@ import React from "react";
 
 import "@components/App/App.css";
 import { AppRouter } from "@routes/AppRouter";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <AppRouter />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
