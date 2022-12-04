@@ -2,9 +2,9 @@ import React from "react";
 
 import "@components/App/App.css";
 import { AppRouter } from "@routes/AppRouter";
-import { HashRouter} from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
-function App() {
+export function App() {
   return (
     <div className="App">
       <HashRouter>
@@ -13,5 +13,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
