@@ -61,7 +61,7 @@ export const LoginForm = () => {
           className={styles.subTitle}
           onClick={() => setIsRegister((prev) => !prev)}
         >
-          {isRegister ? "Уже есть аккаунт? Залогиниться" : "Зарегистрироваться"}
+          {isRegister ? "Зарегистрироваться" : "Уже есть аккаунт? Залогиниться"}
         </span>
       </form>
     </>
