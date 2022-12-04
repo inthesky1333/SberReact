@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "@components/UI/Button";
 import { FormError } from "@components/UI/FormError";
@@ -20,6 +20,8 @@ export const LoginForm = () => {
     mode: "all",
   });
 
+  const [isRegister, setIsRegister] = useState(false);
+
   // useEffect(() => {
   //   setError("login", { type: "server", message: error });
   // }, [error]);
@@ -30,15 +32,23 @@ export const LoginForm = () => {
 
   return (
     <>
-      <h1 className={styles.title}>Вход в систему</h1>
+      <h1 className={styles.title}>
+        {isRegister ? "Вход в систему" : "Зарегистрироваться"}
+      </h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <Input {...register("login")} name={"login"} />
         <FormError error={errors.login} />
         <Input {...register("password")} name={"password"} />
         <FormError error={errors.password} />
         <Button type={"submit"} disabled={!isValid}>
-          Войти
+          {isRegister ? "Войти" : "Регистрирация"}
         </Button>
+        <span
+          className={styles.subTitle}
+          onClick={() => setIsRegister((prev) => !prev)}
+        >
+          {isRegister ? "Уже есть аккаунт? Залогиниться" : "Зарегистрироваться"}
+        </span>
       </form>
     </>
   );

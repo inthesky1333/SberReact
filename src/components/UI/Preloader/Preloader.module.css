@@ -1,25 +1,25 @@
 .spinnerContainer {
-  background-color: inherit;
   z-index: 99;
-  width: 200px;
-  padding: 10px;
   top: 50%;
+  left: 40%;
   display: flex;
+  width: 200px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
   align-self: center;
   justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  left: 40%;
+  padding: 10px;
   border-radius: 0.5rem;
-  align-items: center;
+  background-color: inherit;
 }
 
 .spinnerContainer p {
-  text-align: center;
   margin: 5px 0 0;
-  font-size: 24px;
   animation: loading 2s ease-in-out infinite;
   color: "#000";
+  font-size: 24px;
+  text-align: center;
 }
 
 .upper {
@@ -41,7 +41,7 @@
 
 @keyframes loading {
   0% {
-    color: #fff;
+    color: #FFF;
   }
 
   50% {
@@ -49,6 +49,6 @@
   }
 
   100% {
-    color: #fff;
+    color: #FFF;
   }
 }

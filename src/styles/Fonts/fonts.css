@@ -1,7 +1,7 @@
 @font-face {
+  font-display: swap;
   font-family: Panton;
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
   src: url("./Panton-Regular.woff") format("woff");
 }
