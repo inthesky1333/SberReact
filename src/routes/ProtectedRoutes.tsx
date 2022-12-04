@@ -5,10 +5,11 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoutes = () => {
   const token = localStorage.getItem("token");
+  console.log(token);
   return (
     <>
       {token ? (
-        <Navigate to={`${LocalPaths.Home}`} />
+        <Navigate to={`${LocalPaths.Main}`} />
       ) : (
         <Navigate to={`${LocalPaths.Login}`} />
       )}

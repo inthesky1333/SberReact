@@ -6,7 +6,7 @@
       "@store/*": ["src/store/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@helpers/*": ["src/helpers/*"],
+      "@api/*": ["src/api/*"],
       "@routes/*": ["src/routes/*"],
       "@paths/*": ["src/paths/*"],
       "@pages/*": ["src/pages/*"],

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { AuthService } from "@api/authApis/authService";
 import Button from "@components/UI/Button";
 import { FormError } from "@components/UI/FormError";
 import { Input } from "@components/UI/Input";
@@ -26,8 +27,17 @@ export const LoginForm = () => {
   //   setError("login", { type: "server", message: error });
   // }, [error]);
 
-  const onSubmit: SubmitHandler<FormValues> = ({ login, password }) => {
-    console.log({ login, password });
+  const onSubmit: SubmitHandler<FormValues> = ({ email, password }) => {
+    if (isRegister) {
+      AuthService.login({ email, password }).then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+      });
+    } else {
+      AuthService.register({ email, password, group: "sm8" }).then((res) => {
+        console.log(res);
+      });
+    }
   };
 
   return (
@@ -36,9 +46,13 @@ export const LoginForm = () => {
         {isRegister ? "Вход в систему" : "Зарегистрироваться"}
       </h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <Input {...register("login")} name={"login"} />
-        <FormError error={errors.login} />
-        <Input {...register("password")} name={"password"} />
+        <Input {...register("email")} name={"email"} placeholder={"email"} />
+        <FormError error={errors.email} />
+        <Input
+          {...register("password")}
+          name={"password"}
+          placeholder={"пароль"}
+        />
         <FormError error={errors.password} />
         <Button type={"submit"} disabled={!isValid}>
           {isRegister ? "Войти" : "Регистрирация"}

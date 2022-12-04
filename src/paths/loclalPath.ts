@@ -1,6 +1,6 @@
 export enum LocalPaths {
   Home = "/",
-  Main = "/main",
+  Main = "/products",
   Login = "/login",
   Error = "*",
 }
