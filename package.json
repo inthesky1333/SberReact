@@ -1,7 +1,7 @@
 {
   "name": "react_task_1",
   "version": "0.1.0",
-  "homepage": "https://galichanton.github.io/SberReact/",
+  "homepage": "https://inthesky1333.github.io/SberReact/",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
