@@ -10,7 +10,7 @@ const ProtectedRoutes = () => {
   return (
     <>
       {token ? (
-        <Navigate to={`${LocalPaths.Main}`} />
+        <Navigate to={`${LocalPaths.Products}`} />
       ) : (
         <Navigate to={`${LocalPaths.Login}`} />
       )}

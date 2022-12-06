@@ -5,7 +5,9 @@ import Button from "@components/UI/Button";
 import { FormError } from "@components/UI/FormError";
 import { Input } from "@components/UI/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { LocalPaths } from "@paths/loclalPath";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 import styles from "./LoginForm.module.css";
 import { FormValues } from "./loginFormTypes";
@@ -22,6 +24,7 @@ export const LoginForm = () => {
   });
 
   const [isRegister, setIsRegister] = useState(false);
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   setError("login", { type: "server", message: error });
@@ -32,6 +35,7 @@ export const LoginForm = () => {
       AuthService.login({ email, password }).then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        navigate(LocalPaths.Products);
       });
     } else {
       AuthService.register({ email, password, group: "sm8" }).then((res) => {

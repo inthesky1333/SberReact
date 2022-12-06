@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 
+import { Products } from "@components/Products";
+import { Profile } from "@components/Profile";
 import Preloader from "@components/UI/Preloader";
 import { LoginPage } from "@pages/LoginPage/";
 import { MainPage } from "@pages/MainPage";
@@ -19,7 +21,28 @@ export const AppRouter = () => {
         </Suspense>
       ),
     },
-    { path: LocalPaths.Main, element: <MainPage /> },
+    {
+      path: LocalPaths.Main,
+      element: <MainPage />,
+      children: [
+        {
+          path: LocalPaths.Products,
+          element: (
+            <Suspense fallback={<Preloader />}>
+              <Products />
+            </Suspense>
+          ),
+        },
+        {
+          path: LocalPaths.Profile,
+          element: (
+            <Suspense fallback={<Preloader />}>
+              <Profile />
+            </Suspense>
+          ),
+        },
+      ],
+    },
     { path: LocalPaths.Error, element: <NotFound /> },
     { path: LocalPaths.Login, element: <LoginPage /> },
   ];

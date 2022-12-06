@@ -1,10 +1,10 @@
-import { IProduct } from "@interfaces/product";
+import { IProductResponse } from "@interfaces/product";
 import { AxiosResponse } from "axios";
 
 import { api } from "./shopApi";
 
-export class PoductsService {
-  static async getProducts(): Promise<AxiosResponse<IProduct[]>> {
-    return api.get<IProduct[]>("");
+export class ProductsService {
+  static async getProducts(): Promise<AxiosResponse<IProductResponse>> {
+    return api.get<IProductResponse>("");
   }
 }

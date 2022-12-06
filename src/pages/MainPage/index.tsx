@@ -1,16 +1,20 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 
-import { PoductsService } from "@api/shopApis/productsService";
+import { Footer } from "@components/Footer";
+import { Header } from "@components/Header";
+import { Outlet } from "react-router-dom";
 
-import styles from "./mainpage.module.css";
+import styles from "./mainPage.module.css";
 import { IMainPageProps } from "./mainpageProps";
 
 export const MainPage: FC<IMainPageProps> = () => {
-  useEffect(() => {
-    PoductsService.getProducts().then((res) => {
-      console.log(res);
-    });
-  }, []);
-
-  return <div className={styles.mainpage}>mainpage</div>;
+  return (
+    <>
+      <Header />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
 };

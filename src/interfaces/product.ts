@@ -19,3 +19,8 @@ export interface IProduct {
   updated_at: string;
   __v: number;
 }
+
+export interface IProductResponse {
+  total: number;
+  products: IProduct[];
+}
