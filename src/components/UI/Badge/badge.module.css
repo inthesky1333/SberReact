@@ -1,0 +1,15 @@
+.badge {
+  display: inline-block;
+  min-width: 50px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  color: white;
+}
+
+.new {
+  background-color: #70FE9D;
+}
+
+.sale {
+  background-color: #FF8C00;
+}
