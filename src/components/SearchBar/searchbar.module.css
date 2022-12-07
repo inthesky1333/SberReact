@@ -1,6 +1,6 @@
 .searchbar {
-  width: 50%;
   position: relative;
+  width: 50%;
 }
 
 .input {
@@ -8,19 +8,19 @@
 }
 
 .close {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  right: 10px;
   top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  transition: var(--transition);
-  background-color: #e7e7e7;
-  border-radius: 50%;
-  height: 25px;
+  right: 10px;
+  display: flex;
   width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #E7E7E7;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: var(--transition);
 }
 
 .close:hover {

@@ -4,13 +4,13 @@
   height: 70px;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-main-background);
   padding: 0 10%;
+  background-color: var(--color-main-background);
 }
 
-.logo img{
-  object-fit: cover;
+.logo img {
   width: 200px;
+  object-fit: cover;
 }
 
 .iconBox {
