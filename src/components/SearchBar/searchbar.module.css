@@ -1,0 +1,28 @@
+.searchbar {
+  width: 50%;
+  position: relative;
+}
+
+.input {
+  border-radius: 25px;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: #e7e7e7;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+}
+
+.close:hover {
+  opacity: 0.5;
+}

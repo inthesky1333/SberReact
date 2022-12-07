@@ -1,4 +1,20 @@
 .products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 50px 30px;
+  justify-items: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

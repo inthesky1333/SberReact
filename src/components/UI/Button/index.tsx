@@ -3,13 +3,19 @@ import cn from "classnames";
 import styles from "./button.module.css";
 import { IButtonProps } from "./buttonProps";
 
-const Button = (props: IButtonProps) => {
-  const { children, variant = "primary", width, ...otherProps } = props;
+export const Button = (props: IButtonProps) => {
+  const {
+    children,
+    variant = "primary",
+    width,
+    className,
+    ...otherProps
+  } = props;
 
   return (
     <button
       type="button"
-      className={cn(styles.button, {
+      className={cn(styles.button, className, {
         [styles.buttonPrimary]: variant === "primary",
         [styles.buttonSecondary]: variant === "secondary",
       })}
@@ -20,5 +26,3 @@ const Button = (props: IButtonProps) => {
     </button>
   );
 };
-
-export default Button;

@@ -1,7 +1,7 @@
 import { IAuthor } from "@interfaces/author";
 import { ILogin } from "@interfaces/login";
 import { ApiPaths } from "@paths/apiPaths";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 
 import { authApi } from "./authApi";
 
@@ -16,5 +16,13 @@ export class AuthService {
     data: ILogin
   ): Promise<AxiosResponse<{ data: IAuthor; token: string }>> {
     return authApi.post<{ data: IAuthor; token: string }>(ApiPaths.login, data);
+  }
+
+  static async me(): Promise<AxiosResponse<IAuthor>> {
+    return axios.get<IAuthor>(ApiPaths.me, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
   }
 }

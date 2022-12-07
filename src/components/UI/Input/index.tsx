@@ -1,10 +1,12 @@
 import React, { forwardRef } from "react";
 
+import cn from "classnames";
+
 import styles from "./input.module.css";
 import { IInputProps } from "./inputProps";
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
-  const { error, label, name, value, ...otherProps } = props;
+  const { error, label, name, value, className, ...otherProps } = props;
   return (
     <div className={styles.wrapper}>
       <label htmlFor={name} className={styles.label}>
@@ -15,7 +17,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
         value={value}
         {...otherProps}
         name={name}
-        className={styles.input}
+        className={cn(styles.input, className)}
       />
       <span className={styles.error}>{error}</span>
     </div>

@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from "react";
 
-import { Products } from "@components/Products";
 import { Profile } from "@components/Profile";
 import Preloader from "@components/UI/Preloader";
 import { LoginPage } from "@pages/LoginPage/";
@@ -10,6 +9,8 @@ import { LocalPaths } from "@paths/loclalPath";
 import { RouteObject, useRoutes } from "react-router-dom";
 
 const ProtectedRoutes = lazy(() => import("./ProtectedRoutes"));
+const ProductsPage = lazy(() => import("@pages/ProductsPage"));
+const ProductDetailPage = lazy(() => import("@pages/ProductDetailPage"));
 
 export const AppRouter = () => {
   const routes: RouteObject[] = [
@@ -29,7 +30,7 @@ export const AppRouter = () => {
           path: LocalPaths.Products,
           element: (
             <Suspense fallback={<Preloader />}>
-              <Products />
+              <ProductsPage />
             </Suspense>
           ),
         },
@@ -38,6 +39,14 @@ export const AppRouter = () => {
           element: (
             <Suspense fallback={<Preloader />}>
               <Profile />
+            </Suspense>
+          ),
+        },
+        {
+          path: LocalPaths.ProductDetail,
+          element: (
+            <Suspense fallback={<Preloader />}>
+              <ProductDetailPage />
             </Suspense>
           ),
         },

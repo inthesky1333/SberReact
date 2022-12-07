@@ -1,0 +1,42 @@
+.productDetailPage {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.name {
+  text-align: center;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.priceInfo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.info{
+  width: 200px;
+  font-size: 12px;
+}
+
+.picture {
+  width: 40%;
+  height: 50%;
+}
+
+.picture img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  margin-top: 20px;
+}

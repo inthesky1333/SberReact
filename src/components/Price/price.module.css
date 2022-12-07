@@ -1,0 +1,14 @@
+.price {
+  display: flex;
+  flex-direction: column;
+  min-height: 40px;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: #a9a9a9;
+}
+
+.newPrice {
+  font-weight: bold;
+}
