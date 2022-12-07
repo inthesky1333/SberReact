@@ -10,6 +10,7 @@ const initialState: IProductsReducer = {
   status: "idle",
   error: "",
   selectedProduct: {} as IProduct,
+  searchTerm: "",
 };
 
 const ProductsSlice = createSlice({
@@ -18,6 +19,9 @@ const ProductsSlice = createSlice({
   reducers: {
     setSelectedProduct(state, action: PayloadAction<IProduct>) {
       state.selectedProduct = action.payload;
+    },
+    setSearchTerm(state, action: PayloadAction<string>) {
+      state.searchTerm = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -36,5 +40,5 @@ const ProductsSlice = createSlice({
   },
 });
 
-export const { setSelectedProduct } = ProductsSlice.actions;
+export const { setSelectedProduct, setSearchTerm } = ProductsSlice.actions;
 export default ProductsSlice.reducer;

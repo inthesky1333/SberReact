@@ -7,4 +7,5 @@ export interface IProductsReducer {
   status: StatusType;
   error: string;
   selectedProduct: IProduct;
+  searchTerm: string;
 }
