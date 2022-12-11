@@ -1,7 +1,7 @@
 import { IProduct } from "@interfaces/product";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getProducts } from "@store/products/productsActions";
-import { IProductsReducer } from "@store/products/productsTypes";
+import { FilterType, IProductsReducer } from "@store/products/productsTypes";
 import { AxiosError } from "axios";
 
 const initialState: IProductsReducer = {
@@ -11,6 +11,7 @@ const initialState: IProductsReducer = {
   error: "",
   selectedProduct: {} as IProduct,
   searchTerm: "",
+  filter: "all",
 };
 
 const ProductsSlice = createSlice({
@@ -22,6 +23,9 @@ const ProductsSlice = createSlice({
     },
     setSearchTerm(state, action: PayloadAction<string>) {
       state.searchTerm = action.payload;
+    },
+    setFilter(state, action: PayloadAction<FilterType>) {
+      state.filter = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -40,5 +44,6 @@ const ProductsSlice = createSlice({
   },
 });
 
-export const { setSelectedProduct, setSearchTerm } = ProductsSlice.actions;
+export const { setSelectedProduct, setSearchTerm, setFilter } =
+  ProductsSlice.actions;
 export default ProductsSlice.reducer;

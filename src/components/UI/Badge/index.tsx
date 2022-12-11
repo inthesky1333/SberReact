@@ -13,7 +13,7 @@ export const Badge: FC<IBadgeProps> = ({ variant, text }) => {
         [styles.sale]: variant === "sale",
       })}
     >
-      {variant === "sale" ? text + "%" : text}
+      {variant === "sale" ? `-${text}` + "%" : text}
     </span>
   );
 };

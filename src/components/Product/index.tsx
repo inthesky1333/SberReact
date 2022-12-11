@@ -5,8 +5,9 @@ import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
 import { Like } from "@components/UI/Like";
 import { IProduct } from "@interfaces/product";
-import { useAppDispatch } from "@store/index";
+import { useAppDispatch, useAppSelector } from "@store/index";
 import { setSelectedProduct } from "@store/products/productsSlice";
+import { selectUser } from "@store/user/selectors";
 import { Link } from "react-router-dom";
 
 import styles from "./product.module.css";
@@ -14,6 +15,7 @@ import { IProductProps } from "./productProps";
 
 export const Product: FC<IProductProps> = ({ product }) => {
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
 
   const selectProduct = (data: IProduct) => {
     dispatch(setSelectedProduct(data));
@@ -24,13 +26,13 @@ export const Product: FC<IProductProps> = ({ product }) => {
       <div className={styles.head}>
         {product.tags.includes("new") ? (
           <Badge text={"новинка"} variant={"new"} />
-        ) : product.tags.includes("sale") ? (
+        ) : product.discount ? (
           <Badge text={product.discount} variant={"sale"} />
         ) : null}
         <Like
           className={styles.like}
           onClick={() => console.log("like")}
-          liked
+          liked={product.likes.includes(user._id)}
         />
       </div>
       <Link to={`/shop/product/${product._id}`}>

@@ -4,7 +4,7 @@ export interface IProduct {
   available: boolean;
   pictures: string;
   likes: string[];
-  reviews: any[];
+  reviews: IProductsReview[];
   tags: string[];
   isPublished: boolean;
   _id: string;
@@ -15,6 +15,17 @@ export interface IProduct {
   stock: number;
   wight: string;
   description: string;
+  created_at: string;
+  updated_at: string;
+  __v: number;
+}
+
+export interface IProductsReview {
+  rating: number;
+  _id: string;
+  text: string;
+  author: string;
+  product: string;
   created_at: string;
   updated_at: string;
   __v: number;
