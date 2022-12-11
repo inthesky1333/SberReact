@@ -20,3 +20,23 @@
   color: #000;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1200px) {
+  .filterbar {
+    height: 30px;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 685px) {
+  .filterbar {
+    display: none;
+  }
+}

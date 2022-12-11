@@ -12,3 +12,10 @@
 .newPrice {
   font-weight: bold;
 }
+
+@media screen and (max-width: 1200px) {
+  .price {
+    min-height: 30px;
+    font-size: 12px;
+  }
+}

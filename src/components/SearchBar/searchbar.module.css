@@ -26,3 +26,9 @@
 .close:hover {
   opacity: 0.5;
 }
+
+@media screen and (max-width: 685px) {
+  .searchbar {
+    display: none;
+  }
+}
