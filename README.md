@@ -10,6 +10,14 @@
 - [Питомцы](https://inthesky1333.github.io/SberReact/)
 ---
 
+## Тестовый акаунт:
+
+```
+login: galichanton33@gmail.com
+
+password: 12345
+```
+
 ## Применяемые технологии
 
 - Верстка (HTML, CSS)
