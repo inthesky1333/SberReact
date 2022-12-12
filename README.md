@@ -19,7 +19,7 @@ password: 12345
 ```
 
 ### 
-- [DZ #1]()
+- [DZ #1](https://github.com/inthesky1333/SberReact/tree/DZ_1)
 
 ## Применяемые технологии
 
