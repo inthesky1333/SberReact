@@ -1,6 +1,10 @@
 import { IProduct } from "@interfaces/product";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getProducts } from "@store/products/productsActions";
+import {
+  addLike,
+  getProducts,
+  removeLike,
+} from "@store/products/productsActions";
 import { FilterType, IProductsReducer } from "@store/products/productsTypes";
 import { AxiosError } from "axios";
 
@@ -40,6 +44,23 @@ const ProductsSlice = createSlice({
       const apiError: AxiosError = payload as AxiosError;
       state.status = "failed";
       state.error = apiError.message;
+    });
+    //=========================================================================
+    builder.addCase(addLike.fulfilled, (state, { payload }) => {
+      state.products = state.products.map((product) => {
+        if (product._id === payload.data._id) {
+          return payload.data;
+        }
+        return product;
+      });
+    });
+    builder.addCase(removeLike.fulfilled, (state, { payload }) => {
+      state.products = state.products.map((product) => {
+        if (product._id === payload.data._id) {
+          return payload.data;
+        }
+        return product;
+      });
     });
   },
 });

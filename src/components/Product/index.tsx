@@ -6,6 +6,7 @@ import { Button } from "@components/UI/Button";
 import { Like } from "@components/UI/Like";
 import { IProduct } from "@interfaces/product";
 import { useAppDispatch, useAppSelector } from "@store/index";
+import { addLike, removeLike } from "@store/products/productsActions";
 import { setSelectedProduct } from "@store/products/productsSlice";
 import { selectUser } from "@store/user/selectors";
 import { Link } from "react-router-dom";
@@ -21,6 +22,22 @@ export const Product: FC<IProductProps> = ({ product }) => {
     dispatch(setSelectedProduct(data));
   };
 
+  const addLikeHandler = (productId: string) => {
+    dispatch(addLike(productId));
+  };
+
+  const removeLikeHandler = (productId: string) => {
+    dispatch(removeLike(productId));
+  };
+
+  const likeHandler = () => {
+    if (product.likes.includes(user._id)) {
+      removeLikeHandler(product._id);
+    } else {
+      addLikeHandler(product._id);
+    }
+  };
+
   return (
     <div className={styles.product}>
       <div className={styles.head}>
@@ -31,7 +48,7 @@ export const Product: FC<IProductProps> = ({ product }) => {
         ) : null}
         <Like
           className={styles.like}
-          onClick={() => console.log("like")}
+          onClick={likeHandler}
           liked={product.likes.includes(user._id)}
         />
       </div>

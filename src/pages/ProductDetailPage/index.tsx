@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
 import { Price } from "@components/Price";
+import { Review } from "@components/Review";
 import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
 import { useAppSelector } from "@store/index";
@@ -37,6 +38,14 @@ const ProductDetailPage: FC<IProductDetailPageProps> = () => {
           <Button className={styles.button}>В корзину</Button>
         </div>
       </div>
+      {product.reviews.length ? (
+        <div className={styles.reviews}>
+          <h2>Отзывы</h2>
+          {product.reviews.map((review) => (
+            <Review key={review._id} review={review} />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };
