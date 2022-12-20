@@ -41,3 +41,15 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.delete {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #E7E7E7;
+  cursor: pointer;
+  transition: var(--transition);
+}

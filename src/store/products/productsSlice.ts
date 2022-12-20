@@ -2,6 +2,8 @@ import { IProduct } from "@interfaces/product";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   addLike,
+  addReview,
+  deleteReview,
   getProducts,
   removeLike,
 } from "@store/products/productsActions";
@@ -11,7 +13,10 @@ import { AxiosError } from "axios";
 const initialState: IProductsReducer = {
   products: [],
   totalProducts: 0,
-  status: "idle",
+  status: {
+    products: "idle",
+    reviews: "idle",
+  },
   error: "",
   selectedProduct: {} as IProduct,
   searchTerm: "",
@@ -34,15 +39,15 @@ const ProductsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state) => {
-      state.status = "loading";
+      state.status.products = "loading";
     });
     builder.addCase(getProducts.fulfilled, (state, { payload }) => {
-      state.status = "succeeded";
+      state.status.products = "succeeded";
       state.products = payload.data.products;
     });
     builder.addCase(getProducts.rejected, (state, { payload }) => {
       const apiError: AxiosError = payload as AxiosError;
-      state.status = "failed";
+      state.status.products = "failed";
       state.error = apiError.message;
     });
     //=========================================================================
@@ -61,6 +66,21 @@ const ProductsSlice = createSlice({
         }
         return product;
       });
+    });
+    //=========================================================================
+    builder.addCase(addReview.pending, (state) => {
+      state.status.reviews = "loading";
+    });
+    builder.addCase(addReview.fulfilled, (state, { payload }) => {
+      state.selectedProduct = payload.data;
+      state.status.reviews = "succeeded";
+    });
+    builder.addCase(deleteReview.pending, (state) => {
+      state.status.reviews = "loading";
+    });
+    builder.addCase(deleteReview.fulfilled, (state, { payload }) => {
+      state.selectedProduct = payload.data;
+      state.status.reviews = "succeeded";
     });
   },
 });

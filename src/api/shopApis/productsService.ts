@@ -16,4 +16,22 @@ export class ProductsService {
   static async removeLike(productId: string): Promise<AxiosResponse<IProduct>> {
     return api.delete<IProduct>(`${ApiPaths.likes}/${productId}`);
   }
+
+  static async addReview(
+    productId: string,
+    review: string,
+    rating: string
+  ): Promise<AxiosResponse<IProduct>> {
+    return api.post<IProduct>(`${ApiPaths.reviews}/${productId}`, {
+      text: review,
+      rating,
+    });
+  }
+
+  static async deleteReview(
+    productId: string,
+    reviewId: string
+  ): Promise<AxiosResponse<IProduct>> {
+    return api.delete<IProduct>(`${ApiPaths.reviews}/${productId}/${reviewId}`);
+  }
 }

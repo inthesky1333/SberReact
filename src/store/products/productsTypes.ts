@@ -13,7 +13,10 @@ export type FilterType =
 export interface IProductsReducer {
   products: IProduct[];
   totalProducts: number;
-  status: StatusType;
+  status: {
+    products: StatusType;
+    reviews: StatusType;
+  };
   error: string;
   selectedProduct: IProduct;
   searchTerm: string;

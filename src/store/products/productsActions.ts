@@ -45,3 +45,34 @@ export const removeLike = createAsyncThunk(
     }
   }
 );
+
+export const addReview = createAsyncThunk(
+  "products/addReview",
+  async ({ productId, text, rating }: any, { rejectWithValue }) => {
+    try {
+      const { data }: AxiosResponse<IProduct> = await ProductsService.addReview(
+        productId,
+        text,
+        rating
+      );
+      return { data };
+    } catch (err) {
+      const errTyped = err as AxiosError;
+      return rejectWithValue(errTyped?.response?.data);
+    }
+  }
+);
+
+export const deleteReview = createAsyncThunk(
+  "products/deleteReview",
+  async ({ productId, reviewId }: any, { rejectWithValue }) => {
+    try {
+      const { data }: AxiosResponse<IProduct> =
+        await ProductsService.deleteReview(productId, reviewId);
+      return { data };
+    } catch (err) {
+      const errTyped = err as AxiosError;
+      return rejectWithValue(errTyped?.response?.data);
+    }
+  }
+);
