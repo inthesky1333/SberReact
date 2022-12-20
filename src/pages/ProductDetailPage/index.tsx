@@ -2,18 +2,22 @@ import React, { FC } from "react";
 
 import { Price } from "@components/Price";
 import { Review } from "@components/Review";
+import { RatingForm } from "@components/ReviewForm";
 import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
+import Preloader from "@components/UI/Preloader";
 import { useAppSelector } from "@store/index";
-import { selectSelectedProduct } from "@store/products/selectors";
+import {
+  selectReviewStatus,
+  selectSelectedProduct,
+} from "@store/products/selectors";
 
 import styles from "./productdetailpage.module.css";
 import { IProductDetailPageProps } from "./productdetailpageProps";
 
 const ProductDetailPage: FC<IProductDetailPageProps> = () => {
   const product = useAppSelector(selectSelectedProduct);
-
-  console.log(product);
+  const status = useAppSelector(selectReviewStatus);
 
   return (
     <div className={styles.productDetailPage}>
@@ -38,12 +42,18 @@ const ProductDetailPage: FC<IProductDetailPageProps> = () => {
           <Button className={styles.button}>В корзину</Button>
         </div>
       </div>
+      <RatingForm productId={product._id} />
       {product.reviews.length ? (
         <div className={styles.reviews}>
           <h2>Отзывы</h2>
-          {product.reviews.map((review) => (
-            <Review key={review._id} review={review} />
-          ))}
+          {status === "loading" ? (
+            <Preloader />
+          ) : (
+            [...product.reviews]
+              .reverse()
+              .map((review) => <Review key={review._id} review={review} />)
+          )}
+          )
         </div>
       ) : null}
     </div>
