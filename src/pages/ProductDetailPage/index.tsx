@@ -53,7 +53,6 @@ const ProductDetailPage: FC<IProductDetailPageProps> = () => {
               .reverse()
               .map((review) => <Review key={review._id} review={review} />)
           )}
-          )
         </div>
       ) : null}
     </div>
