@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 
 import { Profile } from "@components/Profile";
 import Preloader from "@components/UI/Preloader";
+import { CartPage } from "@pages/CartPage";
 import { LoginPage } from "@pages/LoginPage/";
 import { MainPage } from "@pages/MainPage";
 import { NotFound } from "@pages/NotFound";
@@ -31,6 +32,14 @@ export const AppRouter = () => {
           element: (
             <Suspense fallback={<Preloader />}>
               <ProductsPage />
+            </Suspense>
+          ),
+        },
+        {
+          path: LocalPaths.Cart,
+          element: (
+            <Suspense fallback={<Preloader />}>
+              <CartPage />
             </Suspense>
           ),
         },

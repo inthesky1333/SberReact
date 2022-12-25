@@ -13,3 +13,18 @@
 .sale {
   background-color: #FF8C00;
 }
+
+.cart {
+  position: absolute;
+  top: -7px;
+  left: -8px;
+  display: flex;
+  min-width: 20px;
+  max-width: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #F20D65;
+  font-size: 12px;
+}

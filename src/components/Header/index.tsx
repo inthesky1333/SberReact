@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
-import cart from "@assets/cart.svg";
 import like from "@assets/like.svg";
 import logo from "@assets/logo.svg";
 import logout from "@assets/logout.png";
 import profile from "@assets/profile.svg";
+import { CartIcon } from "@components/CartIcon";
 import { SearchBar } from "@components/SearchBar";
 import { LocalPaths } from "@paths/loclalPath";
 import { useAppDispatch } from "@store/index";
@@ -23,14 +23,16 @@ export const Header: FC<IHeaderProps> = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <img src={logo} />
-      </div>
+      <Link to={LocalPaths.Products}>
+        <div className={styles.logo}>
+          <img src={logo} />
+        </div>
+      </Link>
       <SearchBar />
       <div className={styles.iconBox}>
-        <img src={cart}></img>
+        <CartIcon />
         <img src={like}></img>
-        <Link to={"/shop/profile"}>
+        <Link to={LocalPaths.Profile}>
           <img src={profile}></img>
         </Link>
         <Link to={LocalPaths.Login}>

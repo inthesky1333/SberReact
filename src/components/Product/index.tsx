@@ -1,10 +1,13 @@
 import React, { FC } from "react";
 
 import { Price } from "@components/Price";
+import { AmountButtons } from "@components/UI/AmountButtons";
 import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
 import { Like } from "@components/UI/Like";
 import { IProduct } from "@interfaces/product";
+import { setToCart } from "@store/cart/cartSlice";
+import { selectCartGoodCount } from "@store/cart/selectors";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { addLike, removeLike } from "@store/products/productsActions";
 import { setSelectedProduct } from "@store/products/productsSlice";
@@ -17,6 +20,13 @@ import { IProductProps } from "./productProps";
 export const Product: FC<IProductProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
+  const productAmountIncart = useAppSelector((state) =>
+    selectCartGoodCount(state, product._id)
+  );
+
+  const price = product.discount
+    ? product.price - (product.discount / 100) * product.price
+    : product.price;
 
   const selectProduct = (data: IProduct) => {
     dispatch(setSelectedProduct(data));
@@ -28,6 +38,15 @@ export const Product: FC<IProductProps> = ({ product }) => {
 
   const removeLikeHandler = (productId: string) => {
     dispatch(removeLike(productId));
+  };
+
+  const addToCartHandler = () => {
+    dispatch(
+      setToCart({
+        id: product._id,
+        price: price,
+      })
+    );
   };
 
   const likeHandler = () => {
@@ -63,7 +82,17 @@ export const Product: FC<IProductProps> = ({ product }) => {
         <div>{product.name}</div>
       </div>
 
-      <Button className={styles.button}>В корзину</Button>
+      {productAmountIncart ? (
+        <AmountButtons
+          productId={product._id}
+          amount={productAmountIncart}
+          price={price}
+        />
+      ) : (
+        <Button onClick={() => addToCartHandler()} className={styles.button}>
+          В корзину
+        </Button>
+      )}
     </div>
   );
 };

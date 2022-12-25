@@ -4,6 +4,7 @@ export enum LocalPaths {
   Products = "/shop/products",
   ProductDetail = "/shop/product/:productId",
   Profile = "/shop/profile",
+  Cart = "/shop/cart",
   Login = "/login",
   Error = "*",
 }
