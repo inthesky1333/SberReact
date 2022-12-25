@@ -17,6 +17,7 @@ const filterButtons: { name: string; value: FilterType }[] = [
   { name: "Сначала дорогие", value: "highPrice" },
   { name: "По рейтингу", value: "topRated" },
   { name: "По скидке", value: "discount" },
+  { name: "Избранные", value: "favourite" },
 ];
 
 export const FilterBar: FC<IFilterBarProps> = () => {
