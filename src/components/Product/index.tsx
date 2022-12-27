@@ -5,6 +5,7 @@ import { AmountButtons } from "@components/UI/AmountButtons";
 import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
 import { Like } from "@components/UI/Like";
+import { getPriceWithDiscount } from "@helpers/getPriceWithDiscount";
 import { IProduct } from "@interfaces/product";
 import { setToCart } from "@store/cart/cartSlice";
 import { selectCartGoodCount } from "@store/cart/selectors";
@@ -24,9 +25,7 @@ export const Product: FC<IProductProps> = ({ product }) => {
     selectCartGoodCount(state, product._id)
   );
 
-  const price = product.discount
-    ? product.price - (product.discount / 100) * product.price
-    : product.price;
+  const price = getPriceWithDiscount(product.price, product.discount);
 
   const selectProduct = (data: IProduct) => {
     dispatch(setSelectedProduct(data));

@@ -16,6 +16,7 @@ module.exports = {
       "@interfaces": resolvePath('./src/interfaces'),
       "@paths": resolvePath('./src/paths'),
       "@routes": resolvePath('./src/routes'),
+      "@helpers": resolvePath('./src/helpers'),
     }
   },
 }

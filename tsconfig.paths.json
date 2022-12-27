@@ -11,6 +11,7 @@
       "@paths/*": ["src/paths/*"],
       "@pages/*": ["src/pages/*"],
       "@assets/*": ["src/assets/*"],
+      "@helpers/*": ["src/helpers/*"],
     }
   }
 }
