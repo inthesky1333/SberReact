@@ -1,4 +1,4 @@
-import { IProduct, IProductResponse } from "@interfaces/product";
+import { INewProduct, IProduct, IProductResponse } from "@interfaces/product";
 import { ApiPaths } from "@paths/apiPaths";
 import { AxiosResponse } from "axios";
 
@@ -11,6 +11,12 @@ export class ProductsService {
 
   static async getProductById(id: string): Promise<AxiosResponse<IProduct>> {
     return api.get<IProduct>(`/${id}`);
+  }
+
+  static async addProduct(
+    product: INewProduct
+  ): Promise<AxiosResponse<IProduct>> {
+    return api.post<IProduct>("", product);
   }
 
   static async addLike(productId: string): Promise<AxiosResponse<IProduct>> {

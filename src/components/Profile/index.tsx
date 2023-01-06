@@ -1,14 +1,19 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 
+import { ProfileForm } from "@components/Profile/ProfileForm";
+import { Modal } from "@components/UI/Modal";
 import { useAppDispatch, useAppSelector } from "@store/index";
-import { selectUser } from "@store/user/selectors";
+import { selectUser, selectUserStatus } from "@store/user/selectors";
 import { me } from "@store/user/userActions";
 
 import styles from "./profile.module.css";
 import { IProfileProps } from "./profileProps";
 
 export const Profile: FC<IProfileProps> = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const user = useAppSelector(selectUser);
+  const status = useAppSelector(selectUserStatus);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -21,9 +26,20 @@ export const Profile: FC<IProfileProps> = () => {
         <img src={user?.avatar} alt="avatar" />
       </div>
       <div className={styles.info}>
-        <div className={styles.name}>{user?.name}</div>
-        <div className={styles.email}>{user?.email}</div>
+        <div>{user?.name}</div>
+        <div>{user?.email}</div>
+        <div>{user?.about}</div>
       </div>
+      <span className={styles.edit} onClick={() => setIsOpen(true)}>
+        ✏️ Редактировать
+      </span>
+      <Modal
+        isOpen={isOpen}
+        handleClose={() => setIsOpen(false)}
+        status={status}
+      >
+        <ProfileForm />
+      </Modal>
     </div>
   );
 };

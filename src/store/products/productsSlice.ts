@@ -2,6 +2,7 @@ import { IProduct } from "@interfaces/product";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   addLike,
+  addProduct,
   addReview,
   deleteReview,
   getProducts,
@@ -46,6 +47,19 @@ const ProductsSlice = createSlice({
       state.products = payload.data.products;
     });
     builder.addCase(getProducts.rejected, (state, { payload }) => {
+      const apiError: AxiosError = payload as AxiosError;
+      state.status.products = "failed";
+      state.error = apiError.message;
+    });
+    //=========================================================================
+    builder.addCase(addProduct.pending, (state) => {
+      state.status.products = "loading";
+    });
+    builder.addCase(addProduct.fulfilled, (state, { payload }) => {
+      state.status.products = "succeeded";
+      state.products = [payload.data, ...state.products];
+    });
+    builder.addCase(addProduct.rejected, (state, { payload }) => {
       const apiError: AxiosError = payload as AxiosError;
       state.status.products = "failed";
       state.error = apiError.message;

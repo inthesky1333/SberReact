@@ -1,5 +1,5 @@
 import { ProductsService } from "@api/shopApis/productsService";
-import { IProduct, IProductResponse } from "@interfaces/product";
+import { INewProduct, IProduct, IProductResponse } from "@interfaces/product";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError, AxiosResponse } from "axios";
 
@@ -9,6 +9,20 @@ export const getProducts = createAsyncThunk(
     try {
       const { data }: AxiosResponse<IProductResponse> =
         await ProductsService.getProducts();
+      return { data };
+    } catch (err) {
+      const errTyped = err as AxiosError;
+      return rejectWithValue(errTyped?.response?.data);
+    }
+  }
+);
+
+export const addProduct = createAsyncThunk(
+  "products/addProduct",
+  async (product: INewProduct, { rejectWithValue }) => {
+    try {
+      const { data }: AxiosResponse<IProduct> =
+        await ProductsService.addProduct(product);
       return { data };
     } catch (err) {
       const errTyped = err as AxiosError;
