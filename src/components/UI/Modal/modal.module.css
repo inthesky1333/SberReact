@@ -1,31 +1,31 @@
 .modal {
   position: fixed;
-  inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
-  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  z-index: 999;
   padding: 40px 20px 20px;
+  background-color: rgb(0 0 0 / 60%);
+  inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
   transition: var(--transition);
 }
 
 .modalContent {
   position: relative;
+  display: flex;
   width: 50%;
   height: 80vh;
-  padding: 30px 0;
-  background-color: #c2c3c6;
-  color: #fff;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 2rem;
+  padding: 30px 0;
   border-radius: 10px;
+  background-color: #C2C3C6;
+  color: #FFF;
+  font-size: 2rem;
+  gap: 10px;
 }
 
 .close {
@@ -35,12 +35,12 @@
   display: flex;
   width: 25px;
   height: 25px;
-  font-size: 18px;
   align-items: center;
   justify-content: center;
   border: none;
   background-color: inherit;
   cursor: pointer;
+  font-size: 18px;
   transform: translateY(-50%);
   transition: var(--transition);
 }

@@ -14,16 +14,16 @@
 
 .form {
   display: flex;
-  flex-direction: column;
-  width: 70%;
-  gap: 10px;
   overflow: auto;
+  width: 70%;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .fieldset {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  border: none;
   padding: 0;
+  border: none;
+  gap: 10px;
 }
