@@ -10,6 +10,7 @@ export const AmountButtons: FC<IAmountButtonsProps> = ({
   productId,
   amount,
   price,
+  maxAmount,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -26,8 +27,12 @@ export const AmountButtons: FC<IAmountButtonsProps> = ({
       <button className={styles.button} onClick={() => removeHandler()}>
         -
       </button>
-      <span className={styles.amount}>{amount}</span>
-      <button className={styles.button} onClick={() => addHandler()}>
+      <span>{amount}</span>
+      <button
+        className={styles.button}
+        onClick={() => addHandler()}
+        disabled={amount === maxAmount}
+      >
         +
       </button>
     </div>

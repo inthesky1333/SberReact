@@ -6,6 +6,7 @@ import { AmountButtons } from "@components/UI/AmountButtons";
 import { Badge } from "@components/UI/Badge";
 import Preloader from "@components/UI/Preloader";
 import { IProduct } from "@interfaces/product";
+import { deleteFromCart } from "@store/cart/cartSlice";
 import { selectCartGoodCount } from "@store/cart/selectors";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { setSelectedProduct } from "@store/products/productsSlice";
@@ -28,6 +29,10 @@ export const CartProduct: FC<ICartProductProps> = ({ productId }) => {
     dispatch(setSelectedProduct(data));
   };
 
+  const deleteProduct = () => {
+    dispatch(deleteFromCart(productId));
+  };
+
   useEffect(() => {
     setIsLoading(true);
     ProductsService.getProductById(productId)
@@ -46,6 +51,9 @@ export const CartProduct: FC<ICartProductProps> = ({ productId }) => {
   if (product) {
     return (
       <div className={styles.cartproduct}>
+        <span className={styles.close} onClick={deleteProduct}>
+          X
+        </span>
         <div className={styles.left}>
           {product?.tags.includes("new") ? (
             <Badge text={"новинка"} variant={"new"} />
@@ -73,6 +81,7 @@ export const CartProduct: FC<ICartProductProps> = ({ productId }) => {
                 ? product.price - (product.discount / 100) * product.price
                 : product.price
             }
+            maxAmount={product.stock}
           />
         </div>
       </div>

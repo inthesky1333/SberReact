@@ -86,6 +86,7 @@ export const Product: FC<IProductProps> = ({ product }) => {
           productId={product._id}
           amount={productAmountIncart}
           price={price}
+          maxAmount={product.stock}
         />
       ) : (
         <Button onClick={() => addToCartHandler()} className={styles.button}>

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
 import { Input } from "@components/UI/Input";
+import { useDebounce } from "@hooks/useDebounce";
 import { useAppDispatch } from "@store/index";
 import { setSearchTerm } from "@store/products/productsSlice";
 
@@ -10,9 +11,9 @@ import { ISearchBarProps } from "./searchbarProps";
 export const SearchBar: FC<ISearchBarProps> = () => {
   const dispatch = useAppDispatch();
 
-  const setSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchTerm(e.currentTarget.value.toLowerCase()));
-  };
+  const setSearch = useDebounce((e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchTerm(e.target.value.toLowerCase()));
+  }, 500);
 
   return (
     <div className={styles.searchbar}>

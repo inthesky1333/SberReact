@@ -63,6 +63,7 @@ const ProductDetailPage: FC<IProductDetailPageProps> = () => {
               productId={product._id}
               amount={productAmountIncart}
               price={price}
+              maxAmount={product.stock}
             />
           ) : (
             <Button

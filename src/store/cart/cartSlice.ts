@@ -30,9 +30,12 @@ const CartSlice = createSlice({
         };
       }
     },
+    deleteFromCart(state, action: PayloadAction<string>) {
+      delete state.goods[action.payload];
+    },
   },
   extraReducers: () => {},
 });
 
-export const { setToCart, removeFromCart } = CartSlice.actions;
+export const { setToCart, removeFromCart, deleteFromCart } = CartSlice.actions;
 export default CartSlice.reducer;

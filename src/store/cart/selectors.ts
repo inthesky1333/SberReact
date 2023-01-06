@@ -20,6 +20,7 @@ export const selectCartGoodCount = createSelector(
 
 export const selectCartGoodsPrice = createSelector(selectCartItems, (items) => {
   return Object.values(items).reduce((acc, item) => {
-    return acc + item.price * item.amount;
+    acc += item.price;
+    return acc;
   }, 0);
 });

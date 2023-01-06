@@ -2,8 +2,10 @@ import React, { FC } from "react";
 
 import { CartProduct } from "@components/Product/CartProduct";
 import { Button } from "@components/UI/Button";
+import { LocalPaths } from "@paths/loclalPath";
 import { selectCartGoods, selectCartGoodsPrice } from "@store/cart/selectors";
 import { useAppSelector } from "@store/index";
+import { Link } from "react-router-dom";
 
 import styles from "./cartpage.module.css";
 import { ICartPageProps } from "./cartpageProps";
@@ -18,7 +20,15 @@ export const CartPage: FC<ICartPageProps> = () => {
         {goods.length ? (
           goods.map((good) => <CartProduct key={good} productId={good} />)
         ) : (
-          <span>Корзина пуста</span>
+          <div className={styles.empty}>
+            <span>Корзина пуста</span>
+            <Link to={LocalPaths.Products}>
+              <Button>Вернуться к покупкам</Button>
+            </Link>
+            <Link to={LocalPaths.Profile}>
+              <Button>Вернуться в профиль</Button>
+            </Link>
+          </div>
         )}
       </div>
       <div className={styles.total}>
