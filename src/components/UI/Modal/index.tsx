@@ -29,7 +29,7 @@ export const Modal: FC<IModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <Portal wrapperId={"profile-modal"}>
+    <Portal wrapperId={"modal"}>
       <div className={styles.modal}>
         <div className={styles.modalContent}>
           <button onClick={handleClose} className={styles.close}>
