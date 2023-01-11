@@ -11,6 +11,7 @@ import {
   selectProductsStatus,
   selectSearchTerm,
 } from "@store/products/selectors";
+import { selectUser } from "@store/user/selectors";
 
 import { IProductsPageProps } from "./productspageProps";
 
@@ -19,6 +20,7 @@ const ProductsPage: FC<IProductsPageProps> = () => {
   const status = useAppSelector(selectProductsStatus);
   const term = useAppSelector(selectSearchTerm);
   const filter = useAppSelector(selectFilter);
+  const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -48,6 +50,9 @@ const ProductsPage: FC<IProductsPageProps> = () => {
             b.reviews.length
       ),
       discount: [...products].sort((a, b) => b.discount - a.discount),
+      favourite: [...products].filter((product) =>
+        product.likes.includes(user._id)
+      ),
     };
   }, [products]);
 

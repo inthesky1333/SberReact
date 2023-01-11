@@ -8,7 +8,8 @@ export type FilterType =
   | "highPrice"
   | "discount"
   | "popular"
-  | "topRated";
+  | "topRated"
+  | "favourite";
 
 export interface IProductsReducer {
   products: IProduct[];

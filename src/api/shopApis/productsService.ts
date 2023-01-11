@@ -9,6 +9,10 @@ export class ProductsService {
     return api.get<IProductResponse>("");
   }
 
+  static async getProductById(id: string): Promise<AxiosResponse<IProduct>> {
+    return api.get<IProduct>(`/${id}`);
+  }
+
   static async addLike(productId: string): Promise<AxiosResponse<IProduct>> {
     return api.put<IProduct>(`${ApiPaths.likes}/${productId}`);
   }
