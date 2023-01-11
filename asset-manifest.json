@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/SberReact/static/css/main.25a1206f.css",
+    "main.js": "/SberReact/static/js/main.e4a99368.js",
+    "static/js/445.2ad0e071.chunk.js": "/SberReact/static/js/445.2ad0e071.chunk.js",
+    "static/css/447.3459f685.chunk.css": "/SberReact/static/css/447.3459f685.chunk.css",
+    "static/js/447.0e7391b2.chunk.js": "/SberReact/static/js/447.0e7391b2.chunk.js",
+    "static/css/544.cf7adb92.chunk.css": "/SberReact/static/css/544.cf7adb92.chunk.css",
+    "static/js/544.9a89a0a7.chunk.js": "/SberReact/static/js/544.9a89a0a7.chunk.js",
+    "static/media/Panton-Regular.woff": "/SberReact/static/media/Panton-Regular.2b4dcb8bf79fc99fe54f.woff",
+    "static/media/logo.svg": "/SberReact/static/media/logo.708a7df727bfc921ad1bccd181681c32.svg",
+    "static/media/profile.svg": "/SberReact/static/media/profile.d6b7a1971ba30d5f79a20dadb0e79a4f.svg",
+    "static/media/like.svg": "/SberReact/static/media/like.b9d7e63e3b2efc8a64801792c40d31fb.svg",
+    "static/media/cart.svg": "/SberReact/static/media/cart.0ea0d7ad59d4397ca987083f0e3d5df0.svg",
+    "index.html": "/SberReact/index.html",
+    "main.25a1206f.css.map": "/SberReact/static/css/main.25a1206f.css.map",
+    "main.e4a99368.js.map": "/SberReact/static/js/main.e4a99368.js.map",
+    "445.2ad0e071.chunk.js.map": "/SberReact/static/js/445.2ad0e071.chunk.js.map",
+    "447.3459f685.chunk.css.map": "/SberReact/static/css/447.3459f685.chunk.css.map",
+    "447.0e7391b2.chunk.js.map": "/SberReact/static/js/447.0e7391b2.chunk.js.map",
+    "544.cf7adb92.chunk.css.map": "/SberReact/static/css/544.cf7adb92.chunk.css.map",
+    "544.9a89a0a7.chunk.js.map": "/SberReact/static/js/544.9a89a0a7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.25a1206f.css",
+    "static/js/main.e4a99368.js"
+  ]
+}
