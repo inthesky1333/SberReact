@@ -3,7 +3,11 @@ import React, { FC } from "react";
 import { CartProduct } from "@components/Product/CartProduct";
 import { Button } from "@components/UI/Button";
 import { LocalPaths } from "@paths/loclalPath";
-import { selectCartGoods, selectCartGoodsPrice } from "@store/cart/selectors";
+import {
+  selectCartGoods,
+  selectCartGoodsPrice,
+  selectCartGoodsPriceWithDiscount,
+} from "@store/cart/selectors";
 import { useAppSelector } from "@store/index";
 import { Link } from "react-router-dom";
 
@@ -12,7 +16,11 @@ import { ICartPageProps } from "./cartpageProps";
 
 export const CartPage: FC<ICartPageProps> = () => {
   const goods = useAppSelector(selectCartGoods);
-  const total = useAppSelector(selectCartGoodsPrice);
+  const fullPrice = useAppSelector(selectCartGoodsPrice);
+  const total = useAppSelector(selectCartGoodsPriceWithDiscount);
+  const discount = fullPrice - total;
+
+  console.log(fullPrice, total, discount);
 
   return (
     <div className={styles.cartpage}>
@@ -32,7 +40,9 @@ export const CartPage: FC<ICartPageProps> = () => {
         )}
       </div>
       <div className={styles.total}>
-        <span>Итого: {total} руб.</span>
+        <p>Цена без скидки: {fullPrice} руб.</p>
+        <p>Скидка: {discount} руб.</p>
+        <p>Итого: {total} руб.</p>
         <Button>Оформить заказ</Button>
       </div>
     </div>

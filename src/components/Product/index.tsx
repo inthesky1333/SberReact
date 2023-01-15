@@ -5,7 +5,6 @@ import { AmountButtons } from "@components/UI/AmountButtons";
 import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
 import { Like } from "@components/UI/Like";
-import { getPriceWithDiscount } from "@helpers/getPriceWithDiscount";
 import { IProduct } from "@interfaces/product";
 import { setToCart } from "@store/cart/cartSlice";
 import { selectCartGoodCount } from "@store/cart/selectors";
@@ -25,8 +24,6 @@ export const Product: FC<IProductProps> = ({ product }) => {
     selectCartGoodCount(state, product._id)
   );
 
-  const price = getPriceWithDiscount(product.price, product.discount);
-
   const selectProduct = (data: IProduct) => {
     dispatch(setSelectedProduct(data));
   };
@@ -43,7 +40,8 @@ export const Product: FC<IProductProps> = ({ product }) => {
     dispatch(
       setToCart({
         id: product._id,
-        price: price,
+        price: product.price,
+        discount: product.discount,
       })
     );
   };
@@ -59,11 +57,14 @@ export const Product: FC<IProductProps> = ({ product }) => {
   return (
     <div className={styles.product}>
       <div className={styles.head}>
-        {product.tags.includes("new") ? (
-          <Badge text={"новинка"} variant={"new"} />
-        ) : product.discount ? (
-          <Badge text={product.discount} variant={"sale"} />
-        ) : null}
+        {product.tags.map((tag) => {
+          if (tag === "new") {
+            return <Badge key={tag} variant={tag} text={"Новинка"} />;
+          }
+          if (tag === "sale") {
+            return <Badge text={product.discount} variant={tag} key={tag} />;
+          }
+        })}
         <Like
           className={styles.like}
           onClick={likeHandler}
@@ -85,8 +86,9 @@ export const Product: FC<IProductProps> = ({ product }) => {
         <AmountButtons
           productId={product._id}
           amount={productAmountIncart}
-          price={price}
+          price={product.price}
           maxAmount={product.stock}
+          discount={product.discount}
         />
       ) : (
         <Button onClick={() => addToCartHandler()} className={styles.button}>

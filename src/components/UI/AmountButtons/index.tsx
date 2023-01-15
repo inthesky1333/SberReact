@@ -11,11 +11,12 @@ export const AmountButtons: FC<IAmountButtonsProps> = ({
   amount,
   price,
   maxAmount,
+  discount,
 }) => {
   const dispatch = useAppDispatch();
 
   const addHandler = () => {
-    dispatch(setToCart({ id: productId, price }));
+    dispatch(setToCart({ id: productId, price, discount }));
   };
 
   const removeHandler = () => {

@@ -7,7 +7,6 @@ import { AmountButtons } from "@components/UI/AmountButtons";
 import { Badge } from "@components/UI/Badge";
 import { Button } from "@components/UI/Button";
 import Preloader from "@components/UI/Preloader";
-import { getPriceWithDiscount } from "@helpers/getPriceWithDiscount";
 import { setToCart } from "@store/cart/cartSlice";
 import { selectCartGoodCount } from "@store/cart/selectors";
 import { useAppDispatch, useAppSelector } from "@store/index";
@@ -28,13 +27,12 @@ const ProductDetailPage: FC<IProductDetailPageProps> = () => {
     selectCartGoodCount(state, product._id)
   );
 
-  const price = getPriceWithDiscount(product.price, product.discount);
-
   const addToCartHandler = () => {
     dispatch(
       setToCart({
         id: product._id,
-        price,
+        price: product.price,
+        discount: product.discount,
       })
     );
   };
@@ -62,7 +60,8 @@ const ProductDetailPage: FC<IProductDetailPageProps> = () => {
             <AmountButtons
               productId={product._id}
               amount={productAmountIncart}
-              price={price}
+              price={product.price}
+              discount={product.discount}
               maxAmount={product.stock}
             />
           ) : (

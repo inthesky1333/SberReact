@@ -76,11 +76,8 @@ export const CartProduct: FC<ICartProductProps> = ({ productId }) => {
           <AmountButtons
             productId={product._id}
             amount={productAmountIncart}
-            price={
-              product.discount
-                ? product.price - (product.discount / 100) * product.price
-                : product.price
-            }
+            discount={product.discount}
+            price={product.price}
             maxAmount={product.stock}
           />
         </div>
