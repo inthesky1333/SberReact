@@ -9,13 +9,21 @@ const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setToCart(state, action: PayloadAction<{ id: string; price: number }>) {
+    setToCart(
+      state,
+      action: PayloadAction<{ id: string; price: number; discount: number }>
+    ) {
       state.goods[action.payload.id] = state.goods[action.payload.id]
         ? {
+            ...state.goods[action.payload.id],
             amount: state.goods[action.payload.id].amount + 1,
             price: state.goods[action.payload.id].price + action.payload.price,
           }
-        : { amount: 1, price: action.payload.price };
+        : {
+            amount: 1,
+            price: action.payload.price,
+            discount: action.payload.discount,
+          };
     },
     removeFromCart(
       state,
@@ -25,6 +33,7 @@ const CartSlice = createSlice({
         delete state.goods[action.payload.id];
       } else {
         state.goods[action.payload.id] = {
+          ...state.goods[action.payload.id],
           amount: state.goods[action.payload.id].amount - 1,
           price: state.goods[action.payload.id].price - action.payload.price,
         };

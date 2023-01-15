@@ -24,3 +24,18 @@ export const selectCartGoodsPrice = createSelector(selectCartItems, (items) => {
     return acc;
   }, 0);
 });
+
+export const selectCartGoodsPriceWithDiscount = createSelector(
+  selectCartItems,
+  (items) => {
+    return Object.values(items).reduce((acc, item) => {
+      if (item.discount) {
+        acc += item.price * (1 - item.discount / 100);
+      } else {
+        acc += item.price;
+      }
+      console.log(item.discount);
+      return acc;
+    }, 0);
+  }
+);

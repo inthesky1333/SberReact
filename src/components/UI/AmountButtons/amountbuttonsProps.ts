@@ -3,4 +3,5 @@ export interface IAmountButtonsProps {
   amount: number;
   price: number;
   maxAmount: number;
+  discount: number;
 }

@@ -3,6 +3,7 @@ export interface ICartReducer {
     [key: string]: {
       amount: number;
       price: number;
+      discount: number;
     };
   };
 }
