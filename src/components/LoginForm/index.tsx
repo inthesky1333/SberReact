@@ -5,7 +5,7 @@ import { FormError } from "@components/UI/FormError";
 import { Input } from "@components/UI/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch, useAppSelector } from "@store/index";
-import { selectToken } from "@store/user/selectors";
+import { selectToken, selectUserStatus } from "@store/user/selectors";
 import { loginUser, registerUser } from "@store/user/userActions";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -26,7 +26,9 @@ export const LoginForm = () => {
 
   const dispatch = useAppDispatch();
   const token = useAppSelector(selectToken);
+  const status = useAppSelector(selectUserStatus);
   const [isRegister, setIsRegister] = useState(false);
+  const [notifier, setNotifier] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,8 +45,23 @@ export const LoginForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (status === "succeeded") {
+      setIsRegister(!isRegister);
+      setNotifier(true);
+      setInterval(() => {
+        setNotifier(false);
+      }, 3000);
+    }
+  }, [status]);
+
   return (
     <>
+      {notifier && (
+        <div style={{ color: "green" }}>
+          Пользователь успешно зарегистрирован
+        </div>
+      )}
       <h1 className={styles.title}>
         {isRegister ? "Вход в систему" : "Зарегистрироваться"}
       </h1>
