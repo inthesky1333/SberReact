@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
+import { useFilterParams } from "@hooks/useFilterParams";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { setFilter } from "@store/products/productsSlice";
 import { FilterType } from "@store/products/productsTypes";
@@ -23,6 +24,8 @@ const filterButtons: { name: string; value: FilterType }[] = [
 export const FilterBar: FC<IFilterBarProps> = () => {
   const filter = useAppSelector(selectFilter);
   const dispatch = useAppDispatch();
+
+  useFilterParams();
   const filterHandler = (value: FilterType) => {
     dispatch(setFilter(value));
   };
