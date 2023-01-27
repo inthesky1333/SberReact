@@ -35,3 +35,14 @@ export interface IProductResponse {
   total: number;
   products: IProduct[];
 }
+
+export interface INewProduct {
+  available: boolean;
+  pictures: string;
+  name: string;
+  price: number;
+  discount: number;
+  stock: number;
+  wight: string;
+  description: string;
+}

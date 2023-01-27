@@ -1,6 +1,12 @@
 import { IAuthor } from "@interfaces/author";
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, me, registerUser } from "@store/user/userActions";
+import {
+  editAvatar,
+  editName,
+  loginUser,
+  me,
+  registerUser,
+} from "@store/user/userActions";
 import { IUserReducer } from "@store/user/userTypes";
 import { AxiosError } from "axios";
 
@@ -54,6 +60,32 @@ const UserSlice = createSlice({
       state.user = payload;
     });
     builder.addCase(me.rejected, (state, { payload }) => {
+      const apiError: AxiosError = payload as AxiosError;
+      state.status = "failed";
+      state.error = apiError.message;
+    });
+    //=========================================================================
+    builder.addCase(editName.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(editName.fulfilled, (state, { payload }) => {
+      state.status = "succeeded";
+      state.user = payload;
+    });
+    builder.addCase(editName.rejected, (state, { payload }) => {
+      const apiError: AxiosError = payload as AxiosError;
+      state.status = "failed";
+      state.error = apiError.message;
+    });
+    //=========================================================================
+    builder.addCase(editAvatar.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(editAvatar.fulfilled, (state, { payload }) => {
+      state.status = "succeeded";
+      state.user = payload;
+    });
+    builder.addCase(editAvatar.rejected, (state, { payload }) => {
       const apiError: AxiosError = payload as AxiosError;
       state.status = "failed";
       state.error = apiError.message;

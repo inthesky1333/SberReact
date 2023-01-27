@@ -26,6 +26,7 @@ password: 12345
 - [DZ #1](https://github.com/inthesky1333/SberReact/tree/DZ_1)
 - [DZ #2](https://github.com/inthesky1333/SberReact/tree/DZ_2)
 - [DZ #3](https://github.com/inthesky1333/SberReact/tree/DZ_3)
+- [DZ #4](https://github.com/inthesky1333/SberReact/tree/DZ_4)
 
 ## Применяемые технологии
 

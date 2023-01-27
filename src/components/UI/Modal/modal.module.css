@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 20px;
+  background-color: rgb(0 0 0 / 60%);
+  inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+  transition: var(--transition);
+}
+
+.modalContent {
+  position: relative;
+  display: flex;
+  width: 50%;
+  height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  border-radius: 10px;
+  background-color: #C2C3C6;
+  color: #FFF;
+  font-size: 2rem;
+  gap: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 5%;
+  right: 10px;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  font-size: 18px;
+  transform: translateY(-50%);
+  transition: var(--transition);
+}

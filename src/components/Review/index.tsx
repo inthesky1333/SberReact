@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from "react";
 
-import { UsersService } from "@api/shopApis/usersService";
+import { UsersService } from "@api/userApi/usersService";
 import { Rating } from "@components/UI/Rating";
 import { IAuthor } from "@interfaces/author";
 import { useAppDispatch, useAppSelector } from "@store/index";

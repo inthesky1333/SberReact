@@ -1,8 +1,11 @@
-import React, { FC, useEffect, useMemo } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 
 import { FilterBar } from "@components/FilterBar";
 import { Products } from "@components/Products";
+import { Button } from "@components/UI/Button";
+import { Modal } from "@components/UI/Modal";
 import Preloader from "@components/UI/Preloader";
+import { AddProductForm } from "@pages/ProductsPage/addProductForm";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import { getProducts } from "@store/products/productsActions";
 import {
@@ -13,9 +16,11 @@ import {
 } from "@store/products/selectors";
 import { selectUser } from "@store/user/selectors";
 
+import styles from "./productspage.module.css";
 import { IProductsPageProps } from "./productspageProps";
 
 const ProductsPage: FC<IProductsPageProps> = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const products = useAppSelector(selectProducts);
   const status = useAppSelector(selectProductsStatus);
   const term = useAppSelector(selectSearchTerm);
@@ -67,12 +72,24 @@ const ProductsPage: FC<IProductsPageProps> = () => {
       {term ? (
         <h2>{`По запросу ${term} найдено ${searchedProducts.length} товаров`}</h2>
       ) : null}
-      <FilterBar />
+      <div className={styles.topBar}>
+        <FilterBar />
+        <Button className={styles.addButton} onClick={() => setIsOpen(true)}>
+          +
+        </Button>
+      </div>
       {status === "loading" ? (
         <Preloader />
       ) : (
         <Products products={searchedProducts} />
       )}
+      <Modal
+        isOpen={isOpen}
+        handleClose={() => setIsOpen(false)}
+        status={status}
+      >
+        <AddProductForm />
+      </Modal>
     </>
   );
 };

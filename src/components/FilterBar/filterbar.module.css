@@ -1,5 +1,6 @@
 .filterbar {
   display: flex;
+  width: 90%;
   height: 40px;
   align-items: center;
   padding: 10px;
