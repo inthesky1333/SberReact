@@ -90,3 +90,16 @@ export const deleteReview = createAsyncThunk(
     }
   }
 );
+
+export const deleteProduct = createAsyncThunk(
+  "products/deleteProduct",
+  async (productId: string, { rejectWithValue }) => {
+    try {
+      await ProductsService.deleteProduct(productId);
+      return { productId };
+    } catch (err) {
+      const errTyped = err as AxiosError;
+      return rejectWithValue(errTyped?.response?.data);
+    }
+  }
+);

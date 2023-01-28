@@ -65,3 +65,10 @@
     height: 150px;
   }
 }
+
+.deleteIcon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}

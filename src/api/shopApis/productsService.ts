@@ -44,4 +44,8 @@ export class ProductsService {
   ): Promise<AxiosResponse<IProduct>> {
     return api.delete<IProduct>(`${ApiPaths.reviews}/${productId}/${reviewId}`);
   }
+
+  static async deleteProduct(productId: string) {
+    return api.delete<IProduct>(productId);
+  }
 }

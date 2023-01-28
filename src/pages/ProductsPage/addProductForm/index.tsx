@@ -48,7 +48,6 @@ export const AddProductForm = () => {
     );
   };
 
-  console.log(errors, isValid);
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <Input {...register("name")} name={"name"} placeholder={"Имя"} />

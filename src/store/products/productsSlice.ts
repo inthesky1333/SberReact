@@ -4,6 +4,7 @@ import {
   addLike,
   addProduct,
   addReview,
+  deleteProduct,
   deleteReview,
   getProducts,
   removeLike,
@@ -95,6 +96,21 @@ const ProductsSlice = createSlice({
     builder.addCase(deleteReview.fulfilled, (state, { payload }) => {
       state.selectedProduct = payload.data;
       state.status.reviews = "succeeded";
+    });
+    //=========================================================================
+    builder.addCase(deleteProduct.pending, (state) => {
+      state.status.products = "loading";
+    });
+    builder.addCase(deleteProduct.fulfilled, (state, { payload }) => {
+      state.products = state.products.filter(
+        (product) => product._id !== payload.productId
+      );
+      state.status.products = "succeeded";
+    });
+    builder.addCase(deleteProduct.rejected, (state, { payload }) => {
+      const apiError: AxiosError = payload as AxiosError;
+      state.status.products = "failed";
+      state.error = apiError.message;
     });
   },
 });

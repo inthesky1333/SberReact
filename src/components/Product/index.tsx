@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
+import del from "@assets/del.png";
 import { Price } from "@components/Price";
 import { AmountButtons } from "@components/UI/AmountButtons";
 import { Badge } from "@components/UI/Badge";
@@ -9,7 +10,11 @@ import { IProduct } from "@interfaces/product";
 import { setToCart } from "@store/cart/cartSlice";
 import { selectCartGoodCount } from "@store/cart/selectors";
 import { useAppDispatch, useAppSelector } from "@store/index";
-import { addLike, removeLike } from "@store/products/productsActions";
+import {
+  addLike,
+  deleteProduct,
+  removeLike,
+} from "@store/products/productsActions";
 import { setSelectedProduct } from "@store/products/productsSlice";
 import { selectUser } from "@store/user/selectors";
 import { Link } from "react-router-dom";
@@ -20,6 +25,14 @@ import { IProductProps } from "./productProps";
 export const Product: FC<IProductProps> = ({ product }) => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
+
+  const isOwner = user._id === product.author._id;
+
+  const handleDelete = () => {
+    const answer = window.confirm("Вы действительно хотите удалить товар?");
+    return answer ? dispatch(deleteProduct(product._id)) : null;
+  };
+
   const productAmountIncart = useAppSelector((state) =>
     selectCartGoodCount(state, product._id)
   );
@@ -65,6 +78,9 @@ export const Product: FC<IProductProps> = ({ product }) => {
             return <Badge text={product.discount} variant={tag} key={tag} />;
           }
         })}
+        {isOwner && (
+          <img src={del} className={styles.deleteIcon} onClick={handleDelete} />
+        )}
         <Like
           className={styles.like}
           onClick={likeHandler}
