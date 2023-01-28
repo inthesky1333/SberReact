@@ -8,6 +8,8 @@ import { CartIcon } from "@components/CartIcon";
 import { SearchBar } from "@components/SearchBar";
 import { LocalPaths } from "@paths/loclalPath";
 import { useAppDispatch } from "@store/index";
+import { setFilter } from "@store/products/productsSlice";
+import { FilterType } from "@store/products/productsTypes";
 import { removeToken } from "@store/user/userSlice";
 import { Link } from "react-router-dom";
 
@@ -21,6 +23,10 @@ export const Header: FC<IHeaderProps> = () => {
     dispatch(removeToken());
   };
 
+  const filterHandler = (value: FilterType) => {
+    dispatch(setFilter(value));
+  };
+
   return (
     <header className={styles.header}>
       <Link to={LocalPaths.Products}>
@@ -31,7 +37,11 @@ export const Header: FC<IHeaderProps> = () => {
       <SearchBar />
       <div className={styles.iconBox}>
         <CartIcon />
-        <img src={like}></img>
+        <img
+          onClick={() => filterHandler("favourite")}
+          style={{ cursor: "pointer" }}
+          src={like}
+        ></img>
         <Link to={LocalPaths.Profile}>
           <img src={profile}></img>
         </Link>
