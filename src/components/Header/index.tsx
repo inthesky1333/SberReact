@@ -29,7 +29,7 @@ export const Header: FC<IHeaderProps> = () => {
 
   return (
     <header className={styles.header}>
-      <Link to={LocalPaths.Products}>
+      <Link to={LocalPaths.Products} onClick={() => filterHandler("all")}>
         <div className={styles.logo}>
           <img src={logo} />
         </div>
