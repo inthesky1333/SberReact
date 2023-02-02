@@ -1,9 +1,9 @@
 .form {
   display: flex;
   width: 340px;
+  height: 200px;
   flex-direction: column;
   justify-content: space-between;
-  height: 200px;
 }
 
 .title {
