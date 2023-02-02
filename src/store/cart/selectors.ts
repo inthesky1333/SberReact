@@ -34,7 +34,6 @@ export const selectCartGoodsPriceWithDiscount = createSelector(
       } else {
         acc += item.price;
       }
-      console.log(item.discount);
       return acc;
     }, 0);
   }

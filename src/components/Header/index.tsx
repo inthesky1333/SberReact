@@ -19,7 +19,7 @@ import { IHeaderProps } from "./headerProps";
 export const Header: FC<IHeaderProps> = () => {
   const dispatch = useAppDispatch();
   const logoutHandler = () => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     dispatch(removeToken());
   };
 

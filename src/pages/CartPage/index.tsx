@@ -20,8 +20,6 @@ export const CartPage: FC<ICartPageProps> = () => {
   const total = useAppSelector(selectCartGoodsPriceWithDiscount);
   const discount = fullPrice - total;
 
-  console.log(fullPrice, total, discount);
-
   return (
     <div className={styles.cartpage}>
       <div className={styles.container}>
@@ -39,7 +37,7 @@ export const CartPage: FC<ICartPageProps> = () => {
           </div>
         )}
       </div>
-      <div className={styles.total}>
+      <div>
         <p>Цена без скидки: {fullPrice} руб.</p>
         <p>Скидка: {discount} руб.</p>
         <p>Итого: {total} руб.</p>
