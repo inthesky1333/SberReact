@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/SberReact/static/css/main.52bd8d33.css",
+    "main.js": "/SberReact/static/js/main.9979f0d0.js",
+    "static/js/445.cbf51a98.chunk.js": "/SberReact/static/js/445.cbf51a98.chunk.js",
+    "static/css/368.ac2c2cad.chunk.css": "/SberReact/static/css/368.ac2c2cad.chunk.css",
+    "static/js/368.d2773192.chunk.js": "/SberReact/static/js/368.d2773192.chunk.js",
+    "static/css/346.4db17ad4.chunk.css": "/SberReact/static/css/346.4db17ad4.chunk.css",
+    "static/js/346.89a5575a.chunk.js": "/SberReact/static/js/346.89a5575a.chunk.js",
+    "static/media/Panton-Regular.woff": "/SberReact/static/media/Panton-Regular.2b4dcb8bf79fc99fe54f.woff",
+    "static/media/del.png": "/SberReact/static/media/del.c4f0af28c10a19fbeee1.png",
+    "static/media/logo.svg": "/SberReact/static/media/logo.708a7df727bfc921ad1bccd181681c32.svg",
+    "static/media/profile.svg": "/SberReact/static/media/profile.d6b7a1971ba30d5f79a20dadb0e79a4f.svg",
+    "static/media/like.svg": "/SberReact/static/media/like.b9d7e63e3b2efc8a64801792c40d31fb.svg",
+    "static/media/cart.svg": "/SberReact/static/media/cart.0ea0d7ad59d4397ca987083f0e3d5df0.svg",
+    "index.html": "/SberReact/index.html",
+    "main.52bd8d33.css.map": "/SberReact/static/css/main.52bd8d33.css.map",
+    "main.9979f0d0.js.map": "/SberReact/static/js/main.9979f0d0.js.map",
+    "445.cbf51a98.chunk.js.map": "/SberReact/static/js/445.cbf51a98.chunk.js.map",
+    "368.ac2c2cad.chunk.css.map": "/SberReact/static/css/368.ac2c2cad.chunk.css.map",
+    "368.d2773192.chunk.js.map": "/SberReact/static/js/368.d2773192.chunk.js.map",
+    "346.4db17ad4.chunk.css.map": "/SberReact/static/css/346.4db17ad4.chunk.css.map",
+    "346.89a5575a.chunk.js.map": "/SberReact/static/js/346.89a5575a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.52bd8d33.css",
+    "static/js/main.9979f0d0.js"
+  ]
+}
